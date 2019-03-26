@@ -15,9 +15,12 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "TETRIS");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::White);
+    sf::RenderWindow window(sf::VideoMode(400, 600), "TETRIS");
+
+    sf::Texture texture;
+    texture.loadFromFile("images/tiles.png");
+    
+    sf::Sprite sprite(texture);
 
     // Game loop
     while (window.isOpen())
@@ -28,8 +31,8 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        window.clear();
-        window.draw(shape);
+        window.clear(sf::Color::White);
+        window.draw(sprite);
         window.display();
     }
     
